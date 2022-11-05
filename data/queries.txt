@@ -1,0 +1,44 @@
+LOAD EMPLOYEE
+P <- SELECT Salary >= 30000 FROM EMPLOYEE
+Q1 <- PROJECT Ssn, Salary FROM P
+PRINT Q1
+EXPORT Q1
+
+A <- CROSS EMPLOYEE EMPLOYEE
+B <- SELECT EMPLOYEE1_Super_ssn == EMPLOYEE2_Ssn FROM A
+RENAME EMPLOYEE1_Ssn TO Ssn FROM B
+RENAME EMPLOYEE1_Bdate TO Bdate FROM B
+RENAME EMPLOYEE1_Super_ssn TO Super_ssn FROM B
+ANS <- SELECT Bdate == EMPLOYEE2_Bdate FROM B
+Q2 <- PROJECT Ssn, Super_ssn, Bdate FROM ANS
+PRINT Q2
+EXPORT Q2
+
+LOAD PROJECT
+T1 <- PROJECT Sex, Dno FROM EMPLOYEE
+T2 <- CROSS T1 PROJECT
+T3 <- SELECT Dno == Dnum FROM T2
+tmp1 <- PROJECT Sex, Pnumber FROM T3
+tmp2 <- CROSS tmp1 tmp1
+tmp3 <- SELECT tmp11_Pnumber == tmp12_Pnumber FROM tmp2
+TM1 <- SELECT tmp11_Sex != tmp12_Sex FROM tmp3
+RENAME tmp11_Pnumber TO Pno FROM TM1
+Q3 <- PROJECT Pno FROM TM1
+PRINT Q3
+EXPORT Q3
+
+A1 <- PROJECT Ssn, Super_ssn, Dno FROM EMPLOYEE
+A2 <- CROSS A1 PROJECT                                              
+A3 <- SELECT Dno == Dnum FROM A2
+B1 <- PROJECT Ssn, Super_ssn, Pnumber FROM A3
+B2 <- CROSS B1 B1
+B3 <- SELECT B11_Super_ssn == B12_Ssn FROM B2
+C1 <- SELECT B11_Pnumber == B12_Pnumber FROM B3
+RENAME B11_Ssn TO Ssn FROM C1
+RENAME B11_Super_ssn TO Super_ssn FROM C1
+RENAME B11_Pnumber TO Pno FROM  C1
+Q4 <- PROJECT Ssn, Super_ssn, Pno FROM C1
+PRINT Q4
+EXPORT Q4
+
+QUIT
