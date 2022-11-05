@@ -26,9 +26,9 @@ Post compilation, an executable names ```server``` will be created in the ```src
 ## QUERIES SYNTAX 
 
 ### TABLES
-1. LOAD <table_name>
+1. ```LOAD <table_name>```
 To successfully load a table, there should be a csv file names <table_name>.csv consisiting of comma-seperated integers in the data directory. 
-2. LIST TABLES
+2. ```LIST TABLES```
 3. PRINT <table_name>
 4. RENAME <toColumnName> TO <fromColumnName> FROM <table_name>
 5. EXPORT <table_name>
