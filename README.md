@@ -26,21 +26,48 @@ Post compilation, an executable names ```server``` will be created in the ```src
 ## QUERIES SYNTAX 
 
 ### TABLES
-1. ```LOAD <table_name>```:
-  To successfully load a table, there should be a csv file names <table_name>.csv consisiting of comma-seperated integers in the data directory. 
-2. ```LIST TABLES```
-3. ```PRINT <table_name>```
-4. ```RENAME <toColumnName> TO <fromColumnName> FROM <table_name>```
-5. ```EXPORT <table_name>```
-6. ```CLEAR <table_name>```
-7. ```QUIT ```
-8. ```<new_table_name> <- CROSS <table_name1> <table_name2>```
-9. ```<new_table_name> <- SELECT <condition> FROM <table_name>```
-10.```<new_table_name> <- PROJECT <column1>(,<columnN>)* FROM <table_name>```
+```LOAD <table_name>```:
+
+To successfully load a table, there should be a csv file names <table_name>.csv consisiting of comma-seperated integers in the data directory. None of the columns in the data file should have the same name and every cell in the table should have a value. 
+
+```LIST TABLES```
+
+This command lists all tables that have been loaded or created using assignment statements
+
+ ```PRINT <table_name>```
+ 
+ Displays the first PRINT_COUNT (global variable) rows of the table.
+ 
+```RENAME <toColumnName> TO <fromColumnName> FROM <table_name>```
+
+<table_name> should be a loaded table in the system and <fromColumnName> should be an exsiting column in the table. <toColumnName> should not be another column in the table
+  
+```EXPORT <table_name>```
+  
+All changes made and new tables created, exist only within the system and will be deleted once execution ends (temp file). To keep changes made (RENAME and new tables), you have to export the table (data).
+  
+```CLEAR <table_name>```
+  
+Removes table from system. 
+  
+```QUIT ```
+  
+Clears all tables present in the system (WITHOUT EXPORTING THEM) (temp file - empty)
+  
+```<new_table_name> <- CROSS <table_name1> <table_name2>```
+  
+```<new_table_name> <- SELECT <condition> FROM <table_name>```
+  
+```<new_table_name> <- PROJECT <column1>(,<columnN>)* FROM <table_name>```
 
 ### MATRICES
-1. ```LOAD MATRIX <matrix name>```
-2. ```PRINT MATRIX <matrix name>```
-3. ```CROSS TRANSPOSE <matrix1 name> <matrix2 name>```
-4. ```EXPORT MATRIX <matrix name>```: 
-  Exports matrix to <matrix_name.csv> in data directory.
+
+```LOAD MATRIX <matrix name>```
+  
+```PRINT MATRIX <matrix name>```
+  
+```CROSS TRANSPOSE <matrix1 name> <matrix2 name>```
+  
+```EXPORT MATRIX <matrix name>```
+ 
+ Exports matrix to <matrix_name.csv> in data directory.
