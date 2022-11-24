@@ -30,6 +30,16 @@ vector<int> Cursor::getNext()
     return result;
 }
 /**
+ * @brief This function reads the current row from the page. 
+ * @return vector<int> 
+ */
+vector<int> Cursor::getRow()
+{
+    logger.log("Cursor::getRow");
+    vector<int> result = this->page.getRow(this->pagePointer);
+    return result;
+}
+/**
  * @brief Function that loads Page indicated by pageIndex. Now the cursor starts
  * reading from the new page.
  *
