@@ -49,16 +49,35 @@ All changes made and new tables created, exist only within the system and will b
 ```CLEAR <table_name>```
   
 Removes table from system. 
+
+```SORT ```
+```<new_table_name> <- SORT <table_name> BY <column_name> IN ASC | DESC```
+Here <table_name> represents the table that has to be sorted and is the
+column in the table that the sort order is based on. ASC or DESC are used
+to denote ascending or descending orders.  
+```<new_table_name> <- SORT <table_name> BY <column_name> IN ASC | DESC BUFFER <buffer_size>```
+Here, the optional parameter <buffer_size> denotes the number of main
+memory buffer blocks you are allowed to use to carry out the sorting
+operation. If no buffer option is provided, the default buffer size is 10.
+
+```<new_table_name> <- CROSS <table_name1> <table_name2>```
   
-```QUIT ```
+```<new_table_name> <- SELECT <condition> FROM <table_name>```
   
-Clears all tables present in the system (WITHOUT EXPORTING THEM) (temp file - empty)
+```<new_table_name> <- PROJECT <column1>(,<columnN>)* FROM <table_name>```
+
   
 ```<new_table_name> <- CROSS <table_name1> <table_name2>```
   
 ```<new_table_name> <- SELECT <condition> FROM <table_name>```
   
 ```<new_table_name> <- PROJECT <column1>(,<columnN>)* FROM <table_name>```
+
+  
+```QUIT ```
+  
+Clears all tables present in the system (WITHOUT EXPORTING THEM) (temp file - empty)
+
 
 ### MATRICES
 
